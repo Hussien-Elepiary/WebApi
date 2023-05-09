@@ -1,0 +1,12 @@
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\bin\Debug\net6.0\ECommerce_Demo_Core.deps.json
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\bin\Debug\net6.0\ECommerce_Demo_Core.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\bin\Debug\net6.0\ECommerce_Demo_Core.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.csproj.AssemblyReference.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.AssemblyInfoInputs.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.AssemblyInfo.cs
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.csproj.CoreCompileInputs.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\refint\ECommerce_Demo_Core.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ECommerce_Demo_Core.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommers_Demo_Core\obj\Debug\net6.0\ref\ECommerce_Demo_Core.dll

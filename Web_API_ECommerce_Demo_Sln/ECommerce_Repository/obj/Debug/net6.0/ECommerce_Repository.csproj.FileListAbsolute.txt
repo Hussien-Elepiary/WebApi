@@ -1,0 +1,15 @@
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\bin\Debug\net6.0\ECommerce_Repository.deps.json
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\bin\Debug\net6.0\ECommerce_Repository.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\bin\Debug\net6.0\ECommerce_Repository.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\bin\Debug\net6.0\ECommerce_Demo_Core.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\bin\Debug\net6.0\ECommerce_Demo_Core.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.csproj.AssemblyReference.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.GeneratedMSBuildEditorConfig.editorconfig
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.AssemblyInfoInputs.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.AssemblyInfo.cs
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.csproj.CoreCompileInputs.cache
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.csproj.CopyComplete
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\refint\ECommerce_Repository.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ECommerce_Repository.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Repository\obj\Debug\net6.0\ref\ECommerce_Repository.dll

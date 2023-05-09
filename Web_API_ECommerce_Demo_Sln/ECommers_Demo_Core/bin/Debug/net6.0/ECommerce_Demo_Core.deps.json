@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "ECommerce_Demo_Core/1.0.0": {
+        "runtime": {
+          "ECommerce_Demo_Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ECommerce_Demo_Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
