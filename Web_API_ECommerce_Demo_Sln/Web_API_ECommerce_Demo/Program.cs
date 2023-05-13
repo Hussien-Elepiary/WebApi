@@ -1,7 +1,11 @@
 using ECommerce_Demo_Core.Repositories;
 using ECommerce_Repository;
 using ECommerce_Repository.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Web_API_ECommerce_Demo.Errors;
+using Web_API_ECommerce_Demo.Helpers;
+using Web_API_ECommerce_Demo.MiddleWares;
 
 namespace Web_API_ECommerce_Demo
 {
@@ -27,6 +31,30 @@ namespace Web_API_ECommerce_Demo
 			);
 
 			builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+			builder.Services.AddAutoMapper(typeof(MappingProfiles));
+			#endregion
+
+			#region Handling Validation Error
+			builder.Services.Configure<ApiBehaviorOptions>(options =>
+			{
+				options.InvalidModelStateResponseFactory = context =>
+				{
+					
+
+					var errors = context.ModelState.Where(P => P.Value.Errors.Count() > 0)/* Gets all the Errors */
+												   .SelectMany(P =>  P.Value.Errors)
+												   .Select(E => E.ErrorMessage)
+												   .ToArray();
+
+					var validationErrorResponse = new ApiValidationErrorResponse()
+					{
+						Errors = errors
+                    };
+
+					return new BadRequestObjectResult(validationErrorResponse);
+                };
+			});
 			#endregion
 
 			var app = builder.Build();
@@ -54,9 +82,15 @@ namespace Web_API_ECommerce_Demo
 			}
 			#endregion
 
-			
+
 
 			#region Confg Kistrel Middelwares
+
+			#region Exption handler middleware user made
+			app.UseMiddleware<ExceptionMiddleWare>();
+			#endregion
+
+
 			// Configure the HTTP request pipeline.
 			#region Use Swagger as Api Doc
 			if (app.Environment.IsDevelopment())
@@ -65,11 +99,11 @@ namespace Web_API_ECommerce_Demo
 				app.UseSwaggerUI();
 			} 
 			#endregion
-
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
 
+			app.UseStaticFiles();
 
 			app.MapControllers(); 
 			#endregion

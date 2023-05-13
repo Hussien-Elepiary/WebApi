@@ -1,5 +1,6 @@
 ﻿using ECommerce_Demo_Core.Entities;
 using ECommerce_Demo_Core.Repositories;
+using ECommerce_Demo_Core.Specifications;
 using ECommerce_Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,10 +29,35 @@ namespace ECommerce_Repository
 			return await _dbContext.Set<T>().ToListAsync();
 		}
 
-		public async Task<T> GetByIdAsync(int id)
+        
+
+        public async Task<T> GetByIdAsync(int id)
 		{
 			//return await _dbContext.Set<T>().Where(X => X.Id == id).FirstOrDefaultAsync();
 			return await _dbContext.Set<T>().FindAsync(id);
 		}
-	}
+
+        #region Specification
+        public async Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecification<T> spec)
+		{
+			return await ApplySpecification(spec).ToListAsync();
+		}
+
+		public async Task<T> GetWithSpecAsync(ISpecification<T> spec)
+		{
+			return await ApplySpecification(spec).FirstOrDefaultAsync();
+		} 
+
+		/// <summary>
+		/// calls SpecificationEvalutor<T> and sends the dbContext.set<T>
+		/// </summary>
+		/// <param name="spec">needs the spec list</param>
+		/// <returns>the Query string</returns>
+		private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+		{
+			return SpecificationEvalutor<T>.GetQuery(_dbContext.Set<T>(),spec);
+		}
+		#endregion
+
+    }
 }

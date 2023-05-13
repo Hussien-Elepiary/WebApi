@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "+0sKoJXqlT4iY8FbQ55ceI2TmCTfqcWBZiBnV6sWmrs=",
+  "Hash": "72FQLwSt96RsF1KOdMz2QijWWUJ0tTMNlnzELgsKvmQ=",
   "Source": "Web_API_ECommerce_Demo",
   "BasePath": "_content/Web_API_ECommerce_Demo",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Web_API_ECommerce_Demo\\wwwroot",
+      "Source": "Web_API_ECommerce_Demo",
+      "ContentRoot": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\Web_API_ECommerce_Demo\\wwwroot\\",
+      "BasePath": "_content/Web_API_ECommerce_Demo",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\Web_API_ECommerce_Demo\\wwwroot\\images\\products\\sb-ang1.png",
+      "SourceId": "Web_API_ECommerce_Demo",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\Web_API_ECommerce_Demo\\wwwroot\\",
+      "BasePath": "_content/Web_API_ECommerce_Demo",
+      "RelativePath": "images/products/sb-ang1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\sb-ang1.png"
+    }
+  ]
 }

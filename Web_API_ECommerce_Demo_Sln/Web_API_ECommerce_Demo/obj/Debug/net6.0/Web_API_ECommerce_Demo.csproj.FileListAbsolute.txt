@@ -70,3 +70,6 @@ F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\obj\Debug\ne
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\obj\Debug\net6.0\Web_API_ECommerce_Demo.pdb
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\obj\Debug\net6.0\Web_API_ECommerce_Demo.genruntimeconfig.cache
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\obj\Debug\net6.0\ref\Web_API_ECommerce_Demo.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\bin\Debug\net6.0\AutoMapper.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\Web_API_ECommerce_Demo\bin\Debug\net6.0\Web_API_ECommerce_Demo.staticwebassets.runtime.json

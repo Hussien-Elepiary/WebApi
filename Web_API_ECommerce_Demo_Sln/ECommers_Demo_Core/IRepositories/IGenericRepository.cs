@@ -1,4 +1,5 @@
 ﻿using ECommerce_Demo_Core.Entities;
+using ECommerce_Demo_Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,8 @@ namespace ECommerce_Demo_Core.Repositories
 	{
 		Task<IEnumerable<T>> GetAllAsync();
 		Task<T> GetByIdAsync(int id);
-	}
+
+        Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecification<T> spec);
+        Task<T> GetWithSpecAsync(ISpecification<T> spec);
+    }
 }
