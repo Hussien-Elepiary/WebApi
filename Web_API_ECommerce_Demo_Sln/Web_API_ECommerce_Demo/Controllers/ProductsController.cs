@@ -12,11 +12,19 @@ namespace Web_API_ECommerce_Demo.Controllers
 	public class ProductsController : BaseApiController
 	{
 		private readonly IGenericRepository<Product> _productsRepo;
+        private readonly IGenericRepository<ProductBrand> _brandsRepo;
+        private readonly IGenericRepository<ProductType> _typesRepo;
         private readonly IMapper _mapper;
 
-        public ProductsController(IGenericRepository<Product> productsRepo,IMapper mapper)
+        public ProductsController(
+            IGenericRepository<Product> productsRepo,
+            IGenericRepository<ProductBrand> brandsRepo,
+            IGenericRepository<ProductType> typesRepo,
+            IMapper mapper)
         {
 			_productsRepo = productsRepo;
+            _brandsRepo = brandsRepo;
+            _typesRepo = typesRepo;
             _mapper = mapper;
         }
 
@@ -38,16 +46,18 @@ namespace Web_API_ECommerce_Demo.Controllers
 
         #region With spec design pattern
         [HttpGet]
-		public async Task<ActionResult<IEnumerable<ProductToReturnDto>>> GetProductsWithSpec()
+		public async Task<ActionResult<IReadOnlyList<ProductToReturnDto>>> GetProductsWithSpec(string? sort, int? brandId, int? typeId)
 		{
-			var spec = new ProductWithBrandAndTypeSpec();
+			var spec = new ProductWithBrandAndTypeSpec(sort, brandId, typeId);
 
 			var products = await _productsRepo.GetAllWithSpecAsync(spec);
 
 			return Ok(_mapper.Map<IEnumerable<Product>, IEnumerable<ProductToReturnDto>>(products));
 		}
 
-		[HttpGet("{id}")]
+        [ProducesResponseType(typeof(ProductToReturnDto),StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        [HttpGet("{id}")]
 		public async Task<ActionResult<ProductToReturnDto>> GetProductWithSpec(int id)
 		{
 			var spec = new ProductWithBrandAndTypeSpec(id);
@@ -57,7 +67,21 @@ namespace Web_API_ECommerce_Demo.Controllers
             if (product == null) return NotFound(new ApiResponse(404));
 
 			return Ok(_mapper.Map<Product,ProductToReturnDto>(product));
-		} 
-		#endregion
-	}
+		}
+
+        [HttpGet("brands")]
+        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetBrands()
+        {
+            var brands = await _brandsRepo.GetAllAsync();
+            return Ok(brands);
+        }
+
+        [HttpGet("types")]
+        public async Task<ActionResult<IReadOnlyList<ProductType>>> GetTypes()
+        {
+            var types = await _typesRepo.GetAllAsync();
+            return Ok(types);
+        }
+        #endregion
+    }
 }

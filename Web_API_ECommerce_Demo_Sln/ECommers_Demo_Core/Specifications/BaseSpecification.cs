@@ -12,6 +12,8 @@ namespace ECommerce_Demo_Core.Specifications
     {
         public Expression<Func<T, bool>> Criteria { get; set; }
         public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
+        public Expression<Func<T, object>> sortAsc { get; set; }
+        public Expression<Func<T, object>> sortDesc { get; set; }
 
         /// <summary>
         /// will build a query with a criteria and make a list of includs for specified data
@@ -28,6 +30,15 @@ namespace ECommerce_Demo_Core.Specifications
         public BaseSpecification()
         {
             
+        }
+
+        public void AddOrderBy(Expression<Func<T, object>> orderBy)
+        {
+            sortAsc = orderBy;
+        }
+        public void AddOrderByDesc(Expression<Func<T, object>> orderBy)
+        {
+            sortDesc = orderBy;
         }
     }
 }

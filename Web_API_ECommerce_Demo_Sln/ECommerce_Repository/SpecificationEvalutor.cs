@@ -24,6 +24,9 @@ namespace ECommerce_Repository
             if (spec.Criteria != null)
                 query = query.Where(spec.Criteria);
 
+            if (spec.sortAsc != null) query = query.OrderBy(spec.sortAsc);
+            if (spec.sortDesc != null) query = query.OrderByDescending(spec.sortDesc);
+
             query = spec.Includes.Aggregate(query, (currentQ, nextInclude) => currentQ.Include(nextInclude));
 
             return query;

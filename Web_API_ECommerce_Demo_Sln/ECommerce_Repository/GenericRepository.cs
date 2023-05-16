@@ -24,7 +24,7 @@ namespace ECommerce_Repository
 		/// GetAllAsync dose not Get the related data will add a new design on it to get the related data 
 		/// </summary>
 		/// <returns></returns>
-		public async Task<IEnumerable<T>> GetAllAsync()
+		public async Task<IReadOnlyList<T>> GetAllAsync()
 		{
 			return await _dbContext.Set<T>().ToListAsync();
 		}
@@ -38,7 +38,7 @@ namespace ECommerce_Repository
 		}
 
         #region Specification
-        public async Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecification<T> spec)
+        public async Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecification<T> spec)
 		{
 			return await ApplySpecification(spec).ToListAsync();
 		}

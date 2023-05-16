@@ -4,6 +4,7 @@ using ECommerce_Repository.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web_API_ECommerce_Demo.Errors;
+using Web_API_ECommerce_Demo.Extentions;
 using Web_API_ECommerce_Demo.Helpers;
 using Web_API_ECommerce_Demo.MiddleWares;
 
@@ -20,9 +21,7 @@ namespace Web_API_ECommerce_Demo
 			// Add services to the container.
 
 			builder.Services.AddControllers(); // Allow Dpindance Injection For API services
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-			builder.Services.AddEndpointsApiExplorer();
-			builder.Services.AddSwaggerGen();
+			builder.Services.AddSwaggerServices();
 
 			builder.Services.AddDbContext<StoreContext>(options =>
 				{ 
@@ -30,33 +29,9 @@ namespace Web_API_ECommerce_Demo
 				}
 			);
 
-			builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+			builder.Services.AddApplicationServices();
 
-			builder.Services.AddAutoMapper(typeof(MappingProfiles));
 			#endregion
-
-			#region Handling Validation Error
-			builder.Services.Configure<ApiBehaviorOptions>(options =>
-			{
-				options.InvalidModelStateResponseFactory = context =>
-				{
-					
-
-					var errors = context.ModelState.Where(P => P.Value.Errors.Count() > 0)/* Gets all the Errors */
-												   .SelectMany(P =>  P.Value.Errors)
-												   .Select(E => E.ErrorMessage)
-												   .ToArray();
-
-					var validationErrorResponse = new ApiValidationErrorResponse()
-					{
-						Errors = errors
-                    };
-
-					return new BadRequestObjectResult(validationErrorResponse);
-                };
-			});
-			#endregion
-
 			var app = builder.Build();
 
 			#region Apply Migration section
@@ -95,10 +70,12 @@ namespace Web_API_ECommerce_Demo
 			#region Use Swagger as Api Doc
 			if (app.Environment.IsDevelopment())
 			{
-				app.UseSwagger();
-				app.UseSwaggerUI();
-			} 
+				app.UseSwaggerMiddlewares();
+			}
 			#endregion
+
+			app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
 			app.UseHttpsRedirection();
 
 			app.UseAuthorization();
