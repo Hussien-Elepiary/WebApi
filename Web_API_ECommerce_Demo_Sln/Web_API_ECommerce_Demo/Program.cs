@@ -1,8 +1,12 @@
+using ECommerce_Demo_Core.Entities.Identity;
 using ECommerce_Demo_Core.Repositories;
 using ECommerce_Repository;
 using ECommerce_Repository.Data;
+using ECommerce_Repository.Identity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 using Web_API_ECommerce_Demo.Errors;
 using Web_API_ECommerce_Demo.Extentions;
 using Web_API_ECommerce_Demo.Helpers;
@@ -29,40 +33,30 @@ namespace Web_API_ECommerce_Demo
 				}
 			);
 
+			builder.Services.AddDbContext<AppIdentityDbContext>(options =>
+			{
+				options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+			});
+
+			builder.Services.AddSingleton<IConnectionMultiplexer>(options =>
+			{
+				var connection = builder.Configuration.GetConnectionString("Redis");
+				return ConnectionMultiplexer.Connect(connection);
+			});
+
 			builder.Services.AddApplicationServices();
+
+			builder.AppAuthServeice();
 
 			#endregion
 			var app = builder.Build();
 
-			#region Apply Migration section
-			//StoreContext dbContext =  new StoreContext();
-			//await dbContext.Database.MigrateAsync();
+			await app.AutoMigrateAsync();
 
-			using var scope = app.Services.CreateScope();
-			var services = scope.ServiceProvider;
-			var loggerFactory = services.GetRequiredService<ILoggerFactory>(); //a nice way to log errors on Console screens
-			try
-			{
-				var dbContext = services.GetRequiredService<StoreContext>(); // ask Exiplictly for the Context to auto migrate DataBase Updates
-				await dbContext.Database.MigrateAsync();
-				
-				#region Add Data With Json File (DataSeeding)
-				await storeContextSeed.SeedAsync(dbContext);
-				#endregion
-			}
-			catch (Exception ex)
-			{
-				var logger = loggerFactory.CreateLogger<Program>();
-				logger.LogError(ex, "There is an error during migration");
-			}
-			#endregion
+            #region Confg Kistrel Middelwares
 
-
-
-			#region Confg Kistrel Middelwares
-
-			#region Exption handler middleware user made
-			app.UseMiddleware<ExceptionMiddleWare>();
+            #region Exption handler middleware user made
+            app.UseMiddleware<ExceptionMiddleWare>();
 			#endregion
 
 
@@ -74,11 +68,14 @@ namespace Web_API_ECommerce_Demo
 			}
 			#endregion
 
+			
+
 			app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
 			app.UseHttpsRedirection();
 
-			app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
 			app.UseStaticFiles();
 

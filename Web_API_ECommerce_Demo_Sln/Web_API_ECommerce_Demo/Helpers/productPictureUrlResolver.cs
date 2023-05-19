@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.Execution;
-using ECommerce_Demo_Core.Entities;
+using ECommerce_Demo_Core.Entities.Products;
 using Web_API_ECommerce_Demo.Dtos;
 
 namespace Web_API_ECommerce_Demo.Helpers

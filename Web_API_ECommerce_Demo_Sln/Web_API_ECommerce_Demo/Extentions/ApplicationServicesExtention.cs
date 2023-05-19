@@ -1,4 +1,5 @@
-﻿using ECommerce_Demo_Core.Repositories;
+﻿using ECommerce_Demo_Core.IRepositories;
+using ECommerce_Demo_Core.Repositories;
 using ECommerce_Repository;
 using Microsoft.AspNetCore.Mvc;
 using Web_API_ECommerce_Demo.Errors;
@@ -10,7 +11,11 @@ namespace Web_API_ECommerce_Demo.Extentions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+            services.AddScoped<IBasketRepository, BasketRepository>();
 
             services.AddAutoMapper(typeof(MappingProfiles));
 

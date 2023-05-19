@@ -1,4 +1,4 @@
-﻿using ECommerce_Demo_Core.Entities;
+﻿using ECommerce_Demo_Core.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Repository.Data
 {
-	public static class storeContextSeed
+    public static class storeContextSeed
 	{
 		public static async Task SeedAsync(StoreContext context)
 		{

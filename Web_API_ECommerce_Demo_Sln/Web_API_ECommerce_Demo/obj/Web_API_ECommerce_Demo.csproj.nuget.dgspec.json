@@ -72,6 +72,74 @@
         }
       }
     },
+    "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\ECommerce_Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\ECommerce_Service.csproj",
+        "projectName": "ECommerce_Service",
+        "projectPath": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\ECommerce_Service.csproj",
+        "packagesPath": "C:\\Users\\hussi\\.nuget\\packages\\",
+        "outputPath": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\hussi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommers_Demo_Core\\ECommerce_Demo_Core.csproj": {
+                "projectPath": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommers_Demo_Core\\ECommerce_Demo_Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommers_Demo_Core\\ECommerce_Demo_Core.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -110,6 +178,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.16, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.6.111, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -159,6 +237,9 @@
             "projectReferences": {
               "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Repository\\ECommerce_Repository.csproj": {
                 "projectPath": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Repository\\ECommerce_Repository.csproj"
+              },
+              "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\ECommerce_Service.csproj": {
+                "projectPath": "F:\\BackEnd\\WebApi\\Web_API_ECommerce_Demo_Sln\\ECommerce_Service\\ECommerce_Service.csproj"
               }
             }
           }

@@ -1,4 +1,4 @@
-﻿using ECommerce_Demo_Core.Entities;
+﻿using ECommerce_Demo_Core.Entities.Products;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +12,7 @@ namespace ECommerce_Repository.Data.Config
 {
 
 
-	internal class ProductConfig : IEntityTypeConfiguration<Product>
+    internal class ProductConfig : IEntityTypeConfiguration<Product>
 	{
 		public void Configure(EntityTypeBuilder<Product> builder)
 		{

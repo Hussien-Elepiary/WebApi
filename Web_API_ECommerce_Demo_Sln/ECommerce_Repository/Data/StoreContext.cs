@@ -1,4 +1,4 @@
-﻿using ECommerce_Demo_Core.Entities;
+﻿using ECommerce_Demo_Core.Entities.Products;
 using ECommerce_Repository.Data.Config;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Repository.Data
 {
-	public class StoreContext : DbContext
+    public class StoreContext : DbContext
 	{
         public StoreContext(DbContextOptions<StoreContext> options) : base(options){}
 

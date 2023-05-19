@@ -46,18 +46,25 @@ namespace ECommerce_Repository
 		public async Task<T> GetWithSpecAsync(ISpecification<T> spec)
 		{
 			return await ApplySpecification(spec).FirstOrDefaultAsync();
-		} 
+		}
 
-		/// <summary>
-		/// calls SpecificationEvalutor<T> and sends the dbContext.set<T>
-		/// </summary>
-		/// <param name="spec">needs the spec list</param>
-		/// <returns>the Query string</returns>
-		private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        public async Task<int> GetCountWithSpec(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
+        /// <summary>
+        /// calls SpecificationEvalutor<T> and sends the dbContext.set<T>
+        /// </summary>
+        /// <param name="spec">needs the spec list</param>
+        /// <returns>the Query string</returns>
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
 		{
 			return SpecificationEvalutor<T>.GetQuery(_dbContext.Set<T>(),spec);
 		}
-		#endregion
+
+       
+        #endregion
 
     }
 }

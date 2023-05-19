@@ -10,3 +10,6 @@ F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\obj\Debug\net6.0\
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\obj\Debug\net6.0\refint\ECommerce_Service.dll
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\obj\Debug\net6.0\ECommerce_Service.pdb
 F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\obj\Debug\net6.0\ref\ECommerce_Service.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\bin\Debug\net6.0\ECommerce_Demo_Core.dll
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\bin\Debug\net6.0\ECommerce_Demo_Core.pdb
+F:\BackEnd\WebApi\Web_API_ECommerce_Demo_Sln\ECommerce_Service\obj\Debug\net6.0\ECommerce_Service.csproj.CopyComplete

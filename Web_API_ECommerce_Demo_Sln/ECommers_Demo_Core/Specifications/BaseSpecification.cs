@@ -14,6 +14,9 @@ namespace ECommerce_Demo_Core.Specifications
         public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
         public Expression<Func<T, object>> sortAsc { get; set; }
         public Expression<Func<T, object>> sortDesc { get; set; }
+        public int Take { get; set; }
+        public int Skip { get; set; }
+        public bool IsPaginationEnabled { get; set; }
 
         /// <summary>
         /// will build a query with a criteria and make a list of includs for specified data
@@ -39,6 +42,18 @@ namespace ECommerce_Demo_Core.Specifications
         public void AddOrderByDesc(Expression<Func<T, object>> orderBy)
         {
             sortDesc = orderBy;
+        }
+
+        /// <summary>
+        ///     Applies Pagination for the Api
+        /// </summary>
+        /// <param name="skip">how many items to skip</param>
+        /// <param name="take">how many itme to take</param>
+        public void ApplyPagination(int skip, int take)
+        {
+            Take= take;
+            Skip= skip;
+            IsPaginationEnabled = true;
         }
     }
 }

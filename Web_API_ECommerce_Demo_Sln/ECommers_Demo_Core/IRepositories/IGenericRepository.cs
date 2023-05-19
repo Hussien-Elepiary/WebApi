@@ -15,5 +15,6 @@ namespace ECommerce_Demo_Core.Repositories
 
         Task<IReadOnlyList<T>> GetAllWithSpecAsync(ISpecification<T> spec);
         Task<T> GetWithSpecAsync(ISpecification<T> spec);
+		Task<int> GetCountWithSpec(ISpecification<T> spec);
     }
 }
