@@ -63,7 +63,22 @@ namespace ECommerce_Repository
 			return SpecificationEvalutor<T>.GetQuery(_dbContext.Set<T>(),spec);
 		}
 
-       
+        public async Task AddAsync(T entity)
+        {
+            await _dbContext.Set<T>().AddAsync(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbContext.Set<T>().Remove(entity);
+        }
+
+        public void Update(T entity)
+        {
+            _dbContext.Set<T>().Update(entity);
+        }
+
+
         #endregion
 
     }

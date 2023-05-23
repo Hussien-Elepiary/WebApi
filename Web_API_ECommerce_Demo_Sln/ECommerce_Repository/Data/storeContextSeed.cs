@@ -1,4 +1,5 @@
-﻿using ECommerce_Demo_Core.Entities.Products;
+﻿using ECommerce_Demo_Core.Entities.Order_Aggregate;
+using ECommerce_Demo_Core.Entities.Products;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,20 @@ namespace ECommerce_Repository.Data
 					await context.SaveChangesAsync();
 				}
 			}
-		}
+
+            if (!context.DeliveryMethods.Any())
+            {
+                var deliveryMethod = File.ReadAllText("../ECommerce_Repository/Data/DataSeed/delivery.json");
+                var deliveryMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryMethod);
+
+                if (deliveryMethods?.Count > 0)
+                {
+                    foreach (var dMethod in deliveryMethods)
+                        await context.Set<DeliveryMethod>().AddAsync(dMethod);
+
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
 	}
 }

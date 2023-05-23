@@ -1,6 +1,9 @@
 ﻿using ECommerce_Demo_Core.IRepositories;
+using ECommerce_Demo_Core.IServices;
 using ECommerce_Demo_Core.Repositories;
+using ECommerce_Demo_Core.UnitOfWork;
 using ECommerce_Repository;
+using ECommerce_Service.Order_Service;
 using Microsoft.AspNetCore.Mvc;
 using Web_API_ECommerce_Demo.Errors;
 using Web_API_ECommerce_Demo.Helpers;
@@ -11,9 +14,11 @@ namespace Web_API_ECommerce_Demo.Extentions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddScoped<IOrderService, OrderService>();
 
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddScoped<IBasketRepository, BasketRepository>();
 
