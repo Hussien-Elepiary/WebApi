@@ -10,7 +10,7 @@ namespace ECommerce_Demo_Core.Entities.Products
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string PicUrl { get; set; }
+        public string PictureUrl { get; set; }
         public decimal Price { get; set; }
 
 

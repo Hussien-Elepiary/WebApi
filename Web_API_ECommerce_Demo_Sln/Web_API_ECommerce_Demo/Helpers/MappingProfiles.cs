@@ -19,7 +19,7 @@ namespace Web_API_ECommerce_Demo.Helpers
             CreateMap<Product, ProductToReturnDto>()
                 .ForMember(d => d.ProductBrand,o => o.MapFrom(s=>s.ProductBrand.Name))
                 .ForMember(d => d.ProductType,o => o.MapFrom(s=>s.ProductType.Name))
-                .ForMember(d => d.PicUrl , o => o.MapFrom<productPictureUrlResolver>());
+                .ForMember(d => d.PictureUrl, o => o.MapFrom<productPictureUrlResolver>());
             #endregion
             #region Address To AddressDto
             CreateMap<ECommerce_Demo_Core.Entities.Identity.Address, AddressDto>().ReverseMap();
@@ -32,12 +32,13 @@ namespace Web_API_ECommerce_Demo.Helpers
             CreateMap<AddressDto, ECommerce_Demo_Core.Entities.Order_Aggregate.Address>();
 
             #region OrderToReturnDto
-            CreateMap<Order, OrderToReturnDto>();
+            CreateMap<Order, OrderToReturnDto>()
+                .ForMember(d=>d.ShippingAddress, o=>o.MapFrom(s=>s.ShippingAddress)).ReverseMap();
             CreateMap<DeliveryMethod, DeliveryMethodDto>();
             CreateMap<OrderItem, OrderItemDto>()
                 .ForMember(d => d.ProductID,O=>O.MapFrom(S=>S.Product.ProductID))
                 .ForMember(d => d.ProductName,O=>O.MapFrom(S=>S.Product.ProductName))
-                .ForMember(d => d.PicUrl,O=>O.MapFrom(S=>S.Product.PicUrl));
+                .ForMember(d => d.PictureUrl,O=>O.MapFrom(S=>S.Product.PictureUrl));
             #endregion
             #endregion
         }

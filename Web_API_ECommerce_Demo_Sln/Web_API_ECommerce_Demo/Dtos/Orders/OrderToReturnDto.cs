@@ -12,6 +12,8 @@ namespace Web_API_ECommerce_Demo.Dtos.Orders
         public DeliveryMethodDto DeliveryMethod { get; set; }
         public ICollection<OrderItemDto> Items { get; set; }
 
+        public string PaymentIntentId { get; set; }
+
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
 

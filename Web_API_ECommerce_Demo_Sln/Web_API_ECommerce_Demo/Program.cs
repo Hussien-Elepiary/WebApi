@@ -46,6 +46,14 @@ namespace Web_API_ECommerce_Demo
 
 			builder.Services.AddApplicationServices();
 
+			builder.Services.AddCors(options =>
+			{
+				options.AddPolicy("MyPolicy", POptions =>
+				{
+					POptions.AllowAnyHeader().AllowAnyMethod().WithOrigins(builder.Configuration["CrosPolicy:Origins"]);
+				});
+			});
+
 			builder.AppAuthServeice();
 
 			#endregion
@@ -69,6 +77,7 @@ namespace Web_API_ECommerce_Demo
 			#endregion
 
 			
+			app.UseCors("MyPolicy");
 
 			app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
@@ -79,7 +88,9 @@ namespace Web_API_ECommerce_Demo
 
 			app.UseStaticFiles();
 
+
 			app.MapControllers(); 
+
 			#endregion
 
 			app.Run();

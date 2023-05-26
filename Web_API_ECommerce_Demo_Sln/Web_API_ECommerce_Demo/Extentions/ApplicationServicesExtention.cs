@@ -1,9 +1,9 @@
 ﻿using ECommerce_Demo_Core.IRepositories;
 using ECommerce_Demo_Core.IServices;
-using ECommerce_Demo_Core.Repositories;
 using ECommerce_Demo_Core.UnitOfWork;
 using ECommerce_Repository;
 using ECommerce_Service.Order_Service;
+using ECommerce_Service.Payment;
 using Microsoft.AspNetCore.Mvc;
 using Web_API_ECommerce_Demo.Errors;
 using Web_API_ECommerce_Demo.Helpers;
@@ -17,6 +17,8 @@ namespace Web_API_ECommerce_Demo.Extentions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IOrderService, OrderService>();
+
+            services.AddScoped<IPaymentService, PaymentService>();
 
             //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 

@@ -12,14 +12,14 @@ namespace ECommerce_Demo_Core.Entities.Order_Aggregate
         {
             
         }
-        public OrderItem(ProductItemIrdered product, decimal cost, int quantity)
+        public OrderItem(ProductItemOrdered product, decimal cost, int quantity)
         {
             Product = product;
             Cost = cost;
             Quantity = quantity;
         }
 
-        public ProductItemIrdered Product { get; set; }
+        public ProductItemOrdered Product { get; set; }
         public decimal Cost { get; set; }
         public int Quantity { get; set; }
 

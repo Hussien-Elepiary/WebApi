@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Repository.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230522154939_OrderEntities")]
-    partial class OrderEntities
+    [Migration("20230526170743_initialCreate")]
+    partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -129,7 +129,7 @@ namespace ECommerce_Repository.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("PicUrl")
+                    b.Property<string>("PictureUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -206,11 +206,11 @@ namespace ECommerce_Repository.Data.Migrations
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.Property<string>("FName")
+                            b1.Property<string>("FirstName")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
-                            b1.Property<string>("LName")
+                            b1.Property<string>("LastName")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 
@@ -238,12 +238,12 @@ namespace ECommerce_Repository.Data.Migrations
                         .WithMany("Items")
                         .HasForeignKey("OrderId");
 
-                    b.OwnsOne("ECommerce_Demo_Core.Entities.Order_Aggregate.ProductItemIrdered", "Product", b1 =>
+                    b.OwnsOne("ECommerce_Demo_Core.Entities.Order_Aggregate.ProductItemOrdered", "Product", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
                                 .HasColumnType("int");
 
-                            b1.Property<string>("PicUrl")
+                            b1.Property<string>("PictureUrl")
                                 .IsRequired()
                                 .HasColumnType("nvarchar(max)");
 

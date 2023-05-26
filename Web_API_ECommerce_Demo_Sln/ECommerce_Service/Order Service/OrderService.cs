@@ -17,11 +17,13 @@ namespace ECommerce_Service.Order_Service
     {
         private readonly IBasketRepository _basketRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IPaymentService _paymentService;
 
-        public OrderService(IBasketRepository basketRepository, IUnitOfWork unitOfWork)
+        public OrderService(IBasketRepository basketRepository, IUnitOfWork unitOfWork, IPaymentService paymentService)
         {
             _basketRepository = basketRepository;
             _unitOfWork = unitOfWork;
+            _paymentService = paymentService;
         }
 
         public async Task<Order?> CreateOrderAsync(string buyerEmail, string basketId, int deliveryMethodId, Address shippingAddress)
@@ -33,7 +35,7 @@ namespace ECommerce_Service.Order_Service
             {
                 var product = await _unitOfWork.Repository<Product>().GetByIdAsync(item.Id);
 
-                var productItemOrder = new ProductItemIrdered(item.Id,product.Name,product.PicUrl);
+                var productItemOrder = new ProductItemOrdered(item.Id,product.Name,product.PictureUrl);
 
                 var orderItem = new OrderItem(productItemOrder, product.Price, item.Quantity);
 
@@ -44,7 +46,16 @@ namespace ECommerce_Service.Order_Service
 
             var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
-            var order = new Order(buyerEmail,shippingAddress,deliveryMethod,orderItems,subTotal);
+            var orderSpecs = new OrderByPaymentIntentId(basket.PaymentIntentID);
+
+            var existingOrder = await _unitOfWork.Repository<Order>().GetWithSpecAsync(orderSpecs);
+
+            if (existingOrder != null) {
+                _unitOfWork.Repository<Order>().Delete(existingOrder);
+
+                await _paymentService.CreateOrUpdatePaymentIntent(basket.Id);
+            }
+            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, orderItems, subTotal, basket.PaymentIntentID);
 
             await _unitOfWork.Repository<Order>().AddAsync(order);
                 

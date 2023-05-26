@@ -9,7 +9,6 @@ namespace Web_API_ECommerce_Demo.Dtos.BasketDtos
         public int Id { get; set; }
         [Required]
         public string ProductName { get; set; }
-        [Required]
         public string PictureUrl { get; set; }
         [Required]
         [Range(0.1, double.MaxValue ,ErrorMessage = "Price must be greater than zero!!")]

@@ -8,12 +8,12 @@ using Web_API_ECommerce_Demo.Errors;
 
 namespace Web_API_ECommerce_Demo.Controllers.Bussines
 {
-    public class BasketsController : BaseApiController
+    public class BasketController : BaseApiController
     {
         private readonly IBasketRepository _basketRepository;
         private readonly IMapper _mapper;
 
-        public BasketsController(IBasketRepository basketRepository,IMapper mapper)
+        public BasketController(IBasketRepository basketRepository,IMapper mapper)
         {
             _basketRepository = basketRepository;
             _mapper = mapper;

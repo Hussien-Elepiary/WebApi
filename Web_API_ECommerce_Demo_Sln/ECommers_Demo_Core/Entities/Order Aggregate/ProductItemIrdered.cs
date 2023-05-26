@@ -1,20 +1,20 @@
 ﻿namespace ECommerce_Demo_Core.Entities.Order_Aggregate
 {
-    public class ProductItemIrdered
+    public class ProductItemOrdered
     {
-        public ProductItemIrdered()
+        public ProductItemOrdered()
         {
             
         }
-        public ProductItemIrdered(int productID, string productName, string picUrl)
+        public ProductItemOrdered(int productID, string productName, string picUrl)
         {
             ProductID = productID;
             ProductName = productName;
-            PicUrl = picUrl;
+            PictureUrl = picUrl;
         }
 
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string PicUrl { get; set; }
+        public string PictureUrl { get; set; }
     }
 }

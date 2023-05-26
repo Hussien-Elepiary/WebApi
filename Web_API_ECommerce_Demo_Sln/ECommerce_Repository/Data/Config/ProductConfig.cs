@@ -20,7 +20,7 @@ namespace ECommerce_Repository.Data.Config
 			builder.Property(P => P.Name)/*.IsRequired()*/.HasMaxLength(100);
 			builder.Property(P => P.Description).IsRequired();
 			builder.Property(P => P.Price).HasColumnType("decimal(18,2)");
-			builder.Property(P => P.PicUrl).IsRequired();
+			builder.Property(P => P.PictureUrl).IsRequired();
 
 
 			//Each Product has one Barnd and One Type But Each Brand and Type Have many Products

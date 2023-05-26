@@ -15,8 +15,8 @@ namespace Web_API_ECommerce_Demo.Helpers
         }
         public string Resolve(Product source, ProductToReturnDto destination, string destMember, ResolutionContext context)
         {
-            if (!string.IsNullOrEmpty(source.PicUrl))
-                return $"{_configuration["ApiBaseUrl"]}{source.PicUrl}";
+            if (!string.IsNullOrEmpty(source.PictureUrl))
+                return $"{_configuration["ApiBaseUrl"]}{source.PictureUrl}";
             return string.Empty ;
         }
     }

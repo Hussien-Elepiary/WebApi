@@ -31,8 +31,8 @@ namespace Web_API_ECommerce_Demo.Controllers.Bussines
         public async Task<ActionResult<OrderToReturnDto>> CreateOrder(OrderDto orderDto)
         {
             var buyerEmail = User.FindFirstValue(ClaimTypes.Email);
-            var shippingAddress = _mapper.Map<AddressDto, Address>(orderDto.ShippingAddress);
-            var order = await _orderService.CreateOrderAsync(buyerEmail, orderDto.BaskitId, orderDto.DeliveryMethodId, shippingAddress);
+            var shippingAddress = _mapper.Map<AddressDto, Address>(orderDto.shipToAddress);
+            var order = await _orderService.CreateOrderAsync(buyerEmail, orderDto.BasketId, orderDto.DeliveryMethodId, shippingAddress);
             var mappedOrder = _mapper.Map<OrderToReturnDto>(order);
 
             if (mappedOrder is null) return BadRequest(new ApiResponse(400));
@@ -61,7 +61,7 @@ namespace Web_API_ECommerce_Demo.Controllers.Bussines
             return Ok(mappedOrder);
         }
 
-        [HttpGet("deliveryMethod")]
+        [HttpGet("deliveryMethods")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods() 
         {
             var deliveryMethod = await _orderService.GetDeliveryMethodsAsync();
