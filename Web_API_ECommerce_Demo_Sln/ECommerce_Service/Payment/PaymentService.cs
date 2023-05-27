@@ -62,7 +62,7 @@ namespace ECommerce_Service.Payment
             
             PaymentIntent paymentIntent;
 
-            if (string.IsNullOrEmpty(basket.PaymentIntentID))
+            if (string.IsNullOrEmpty(basket.PaymentIntentId))
             {
                 var options = new PaymentIntentCreateOptions()
                 {
@@ -72,7 +72,7 @@ namespace ECommerce_Service.Payment
                 };
                 paymentIntent = await service.CreateAsync(options);
 
-                basket.PaymentIntentID = paymentIntent.Id;
+                basket.PaymentIntentId = paymentIntent.Id;
                 basket.ClientSecret = paymentIntent.ClientSecret;
             }
             else 
@@ -81,7 +81,7 @@ namespace ECommerce_Service.Payment
                 {
                     Amount = (long)(basket.Items.Sum(item => item.Price * item.Quantity * 100) + basket.ShippingCost * 100),
                 };
-                await service.UpdateAsync(basket.PaymentIntentID,options);
+                await service.UpdateAsync(basket.PaymentIntentId,options);
             }
 
             await _basketRepository.UdateBasketAsync(basket);
@@ -98,7 +98,7 @@ namespace ECommerce_Service.Payment
 
             _unitOfWork.Repository<Order>().Update(order);
 
-            await _unitOfWork.Complete();
+            await _unitOfWork.CompleteAsync();
 
             return order;
         }

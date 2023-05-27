@@ -13,14 +13,14 @@ using Web_API_ECommerce_Demo.Extentions;
 
 namespace Web_API_ECommerce_Demo.Controllers.UserControllers
 {
-    public class AccountsController : BaseApiController
+    public class AccountController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
 
-        public AccountsController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper)
         {
             _userManager = userManager;
             _signInManager = signInManager;

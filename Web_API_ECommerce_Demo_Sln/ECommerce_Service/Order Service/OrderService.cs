@@ -26,7 +26,7 @@ namespace ECommerce_Service.Order_Service
             _paymentService = paymentService;
         }
 
-        public async Task<Order?> CreateOrderAsync(string buyerEmail, string basketId, int deliveryMethodId, Address shippingAddress)
+        public async Task<Order> CreateOrderAsync(string buyerEmail, string basketId, int deliveryMethodId, Address shippingAddress)
         {
             var basket = await _basketRepository.GetBasketAsync(basketId);
 
@@ -46,7 +46,7 @@ namespace ECommerce_Service.Order_Service
 
             var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
-            var orderSpecs = new OrderByPaymentIntentId(basket.PaymentIntentID);
+            var orderSpecs = new OrderByPaymentIntentId(basket.PaymentIntentId);
 
             var existingOrder = await _unitOfWork.Repository<Order>().GetWithSpecAsync(orderSpecs);
 
@@ -55,11 +55,11 @@ namespace ECommerce_Service.Order_Service
 
                 await _paymentService.CreateOrUpdatePaymentIntent(basket.Id);
             }
-            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, orderItems, subTotal, basket.PaymentIntentID);
+            var order = new Order(buyerEmail, shippingAddress, deliveryMethod, orderItems, subTotal, basket.PaymentIntentId);
 
             await _unitOfWork.Repository<Order>().AddAsync(order);
                 
-            var result =  await _unitOfWork.Complete();
+            var result =  await _unitOfWork.CompleteAsync();
 
             if (result > 0) return order;
             return null;

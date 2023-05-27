@@ -12,12 +12,10 @@ namespace Web_API_ECommerce_Demo.Controllers.Payment
     public class PaymentsController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
-        private readonly ILogger _logger;
 
-        public PaymentsController(IPaymentService paymentService, ILogger logger)
+        public PaymentsController(IPaymentService paymentService)
         {
             _paymentService = paymentService;
-            _logger = logger;
         }
 
         [ProducesResponseType(typeof(CustomerBasketDto),StatusCodes.Status200OK)]
@@ -49,11 +47,11 @@ namespace Web_API_ECommerce_Demo.Controllers.Payment
             {
                 case Events.PaymentIntentSucceeded:
                     order = await _paymentService.UpdatePaymentIntentToSucceededOrFailed(paymentIntent.Id, true);
-                    _logger.LogInformation("Payment Succeeded", paymentIntent.Id);
+                    //_logger.LogInformation("Payment Succeeded", paymentIntent.Id);
                     break;
                 case Events.PaymentIntentPaymentFailed:
                     order = await _paymentService.UpdatePaymentIntentToSucceededOrFailed(paymentIntent.Id, false);
-                    _logger.LogInformation("Payment Failed", paymentIntent.Id);
+                    //_logger.LogInformation("Payment Failed", paymentIntent.Id);
                     break;
             }
 

@@ -11,6 +11,6 @@ namespace ECommerce_Demo_Core.UnitOfWork
     public interface IUnitOfWork:IAsyncDisposable
     {
         IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BaseEntity;
-        Task<int> Complete();
+        Task<int> CompleteAsync();
     }
 }
